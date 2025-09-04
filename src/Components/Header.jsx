@@ -6,11 +6,6 @@ function Header() {
     flex items-center justify-between px-6">
 
       <h1 className="text-white text-lg font-bold">Todo</h1>
-
-      <div className="flex items-center gap-4">
-        <button className="text-white">Login</button>
-        <button className="bg-gray-800 text-white px-3 py-1 rounded">Sign Up</button>
-      </div>
     </div>
 
   )
