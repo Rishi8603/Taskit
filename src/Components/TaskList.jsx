@@ -24,7 +24,7 @@ function TaskList({ tasks, deleteTask, updateTask, editingId, setEditingId, edit
                 onChange={() => {
                   const updatedTask = { ...task, completed: !task.completed };
                   updateTask(task.id, updatedTask); 
-                }}ss
+                }}
                 className="mr-2 accent-green-500"
               />
 
