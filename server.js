@@ -2,28 +2,29 @@ const express=require('express')
 const cors=require('cors')
 const app = express()
 const mongoose = require("mongoose"); 
-mongoose.connect("mongodb://127.0.0.1:27017/todoDB", {
+
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(() => console.log("MongoDB connected"))
+.then(() => console.log("MongoDB Atlas connected"))
 .catch(err => console.error("MongoDB connection error:", err));
 
+
 const taskSchema = new mongoose.Schema({
-  text: { type: String, required: true },   // task ka naam
-  completed: { type: Boolean, default: false }  // by default false rahega
+  text: { type: String, required: true },
+  completed: { type: Boolean, default: false }
 });
 
 const Task = mongoose.model("Task", taskSchema);
-
-
 
 app.use(express.json()); 
 
 const corsOptions = {
   origin: [
     "http://localhost:5173",
-    "https://to-do-brown-five.vercel.app"
+    "https://to-do-brown-five.vercel.app",
+    "https://to-r76avxbfy-rishis-projects-24bf552.vercel.app" 
   ]
 };
 app.use(cors(corsOptions));
@@ -105,6 +106,7 @@ app.put('/api/tasks/:id', async (req, res) => {
 app.get("/", (req, res) => {
   res.send("Backend is running");
 });
+
 
 
 const PORT = process.env.PORT || 5000;
