@@ -5,9 +5,15 @@ const {v4: uuidv4}=require('uuid');
 
 app.use(express.json()); 
 
-app.use(cors())
+const corsOptions = {
+  origin: [
+    "http://localhost:5173",
+    "https://to-do-brown-five.vercel.app"
+  ]
+};
+app.use(cors(corsOptions));
 
-const tasks =[
+let tasks =[
   {id:uuidv4(), text: "learn about express",completed:false},
   {id: uuidv4(), text: "create a GET route", completed:false},
   {id: uuidv4(), text: "connect react to express", completed:false}
@@ -53,6 +59,7 @@ app.put('/api/tasks/:id', (req, res) => {
   res.json(tasks[taskIndex]);
 });
 
-app.listen(5000, () => {
-  console.log("http://localhost:5000/api/tasks");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
