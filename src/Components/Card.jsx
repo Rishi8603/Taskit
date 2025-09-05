@@ -45,7 +45,7 @@ function Card() {
         className="absolute bottom-6 right-6 bg-white rounded-xl p-6 w-80 shadow-lg"
         style={
           window.innerWidth < 1024 && isKeyboardOpen ? {
-            top: '50px',
+            top: '150px',
             bottom: 'auto',
             left: '20px',
             right: '20px',
