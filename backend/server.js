@@ -1,8 +1,6 @@
-const express = require('express');
-const app = express();
 require('dotenv').config();
-console.log("MONGODB_URI from env:", process.env.MONGODB_URI);
 
+const express = require('express');
 
 // Import configurations and middleware
 const connectDB = require('./config/database');
@@ -11,6 +9,8 @@ const taskRoutes = require('./routes/taskRoutes');
 
 // Connect to MongoDB
 connectDB();
+
+const app = express();
 
 // Middleware
 app.use(express.json());
