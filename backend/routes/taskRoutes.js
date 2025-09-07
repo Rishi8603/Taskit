@@ -21,6 +21,10 @@ router.get('/tasks', async (req, res) => {
 // POST new task
 router.post('/tasks', async (req, res) => {
   try {
+    if (!req.body.text) {
+      return res.status(400).json({ message: "Task text is required" });
+    }
+    
     const newTask = new Task({
       text: req.body.text
     });

@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
+console.log("MONGODB_URI from env:", process.env.MONGODB_URI);
+
 
 // Import configurations and middleware
 const connectDB = require('./config/database');
