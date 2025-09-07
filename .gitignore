@@ -1,0 +1,17 @@
+# Node modules (ignore in all folders)
+**/node_modules/
+
+# Env files
+frontend/.env
+backend/.env
+
+# Logs
+**/*.log
+
+# Build outputs
+frontend/dist/
+backend/build/
+
+# OS / Editor files
+.DS_Store
+.vscode/

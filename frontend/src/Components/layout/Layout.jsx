@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import TaskList from "./TaskList.jsx";
+import TaskList from "../tasks/TaskList.jsx";
 import { Outlet } from "react-router-dom";
 import { useContext } from "react";
-import TasksContext from "./TasksContext.jsx";
+import TasksContext from "../context/TasksContext.jsx";
 
 function Layout() {
   const {tasks,setTasks,deleteTask,updateTask,editingId,setEditingId,editingText,setEditingText}=useContext(TasksContext);

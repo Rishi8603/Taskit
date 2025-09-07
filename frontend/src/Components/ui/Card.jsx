@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useContext, useState, useEffect } from 'react';
-import TasksContext from './TasksContext.jsx';
+import TasksContext from '../context/TasksContext.jsx';
 
 function Card() {
   const navigate = useNavigate();
