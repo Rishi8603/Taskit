@@ -16,6 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(corsMiddleware);
 
+
 // Routes
 app.use('/api', taskRoutes);
 
