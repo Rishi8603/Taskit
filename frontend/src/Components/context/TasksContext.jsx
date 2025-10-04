@@ -7,12 +7,22 @@ export function TasksProvider({ children }) {
   const [tasks, setTasks] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [editingText, setEditingText] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${backendUrl}/api/tasks`)
-      .then((res) => res.json())
-      .then((data) => setTasks(data))
-      .catch((err) => console.error("Failed to fetch tasks:", err));
+    async function fetchTasks() {
+      try {
+        const res = await fetch(`${backendUrl}/api/tasks`);
+        if (!res.ok) throw new Error("Failed to fetch tasks");
+        const data = await res.json();
+        setTasks(data);
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchTasks();
   }, []);
 
   async function addTask(newTaskText) {
