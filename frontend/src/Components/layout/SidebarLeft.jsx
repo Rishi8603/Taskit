@@ -10,6 +10,8 @@ function SidebarLeft() {
         <Link to="/add" className="hover:text-gray-300">Add Task</Link>
         <Link to="/finished" className="hover:text-gray-300">Completed Task</Link>
       </nav>
+
+      
     </div>
   )
 }
