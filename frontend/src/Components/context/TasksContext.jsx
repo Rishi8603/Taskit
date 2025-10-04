@@ -85,6 +85,7 @@ export function TasksProvider({ children }) {
         setEditingId,
         editingText,
         setEditingText,
+        loading,
       }}
     >
       {children}

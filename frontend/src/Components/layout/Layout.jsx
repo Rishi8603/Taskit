@@ -15,6 +15,8 @@ function Layout() {
     setEditingText,
     loading, 
   } = useContext(TasksContext);
+  console.log("Tasks from context:", tasks);
+  console.log("Loading flag:", loading);
 
   return (
     <div>
