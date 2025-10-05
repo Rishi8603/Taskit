@@ -7,7 +7,7 @@ export function TasksProvider({ children }) {
   const [tasks, setTasks] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [editingText, setEditingText] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     async function fetchTasks() {
@@ -16,12 +16,13 @@ export function TasksProvider({ children }) {
         if (!res.ok) throw new Error("Failed to fetch tasks");
         const data = await res.json();
         setTasks(data);
-      } catch (error) {
-        console.error("Error fetching tasks:", error);
+      } catch (err) {
+        console.error("Failed to fetch tasks:", err);
       } finally {
         setLoading(false);
       }
     }
+
     fetchTasks();
   }, []);
 
@@ -36,7 +37,7 @@ export function TasksProvider({ children }) {
       if (!response.ok) throw new Error("Failed to add task on server");
 
       const addedTask = await response.json();
-      setTasks([...tasks, addedTask]);
+      setTasks((prev) => [...prev, addedTask]);
     } catch (err) {
       console.error("Error adding task:", err);
     }
@@ -50,7 +51,7 @@ export function TasksProvider({ children }) {
 
       if (!response.ok) throw new Error("Failed to delete task on server");
 
-      setTasks(tasks.filter((task) => task.id !== id));
+      setTasks((prev) => prev.filter((task) => task.id !== id));
     } catch (err) {
       console.error("Error deleting task:", err);
     }
@@ -67,7 +68,9 @@ export function TasksProvider({ children }) {
       if (!response.ok) throw new Error("Failed to update task on server");
 
       const returnedTask = await response.json();
-      setTasks(tasks.map((task) => (task.id === id ? returnedTask : task)));
+      setTasks((prev) =>
+        prev.map((task) => (task.id === id ? returnedTask : task))
+      );
     } catch (err) {
       console.error("Error updating task:", err);
     }
@@ -85,7 +88,7 @@ export function TasksProvider({ children }) {
         setEditingId,
         editingText,
         setEditingText,
-        loading,
+        loading, 
       }}
     >
       {children}
