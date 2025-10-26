@@ -25,6 +25,15 @@ app.get("/", (req, res) => {
   res.send("Backend is running");
 });
 
+//health check
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    message: "Server and database are healthy",
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
